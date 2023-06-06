@@ -10,6 +10,7 @@ import { Guess as NumberGuess } from './lib/types'
 import EndCardModal from './components/modal/EndCardModal'
 import InstructionModal from './components/modal/InstructionModal'
 import SettingsDropdown from './components/dropdown/SettingsDropdown'
+import PinPadModal from './components/modal/PinPadModal'
 
 const GUESS_LENGTH = 3
 const MAX_GUESS_COUNT = 7
@@ -23,6 +24,7 @@ export default function App() {
   const [won, toggleWon] = useState<boolean | undefined>(undefined)
 
   const [openInstructionModal, toggleInstructionModal] = useState<boolean>(true)
+  const [openPinPadModal, togglePinPadModal] = useState<boolean>(false)
 
   const onBackspaceClicked = () => {
     const newGuess = [...guess]
@@ -146,17 +148,41 @@ export default function App() {
             </div>
           </div>
         </div>
-        <PinPad 
-          number={guess}
-          onNumberClicked={(number: number)  => onNumberClicked(number)}
-          onBackspaceClicked={() => onBackspaceClicked()}
-          onEnterClicked={() => onEnterClicked()}
-        />
+        <div className="hidden sm:block">
+          <PinPad 
+            number={guess}
+            onNumberClicked={(number: number)  => onNumberClicked(number)}
+            onBackspaceClicked={() => onBackspaceClicked()}
+            onEnterClicked={() => onEnterClicked()}
+          />
+        </div>
+        <div className="block sm:hidden">
+          <button
+            type="button"
+            className="inline-flex w-full justify-center rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 sm:ml-3 sm:w-auto"
+            onClick={() => { 
+              togglePinPadModal(true)}
+            }
+          >
+            Open Pin Pad
+          </button>  
+        </div>
       </main>
       { won !== undefined && 
           <EndCardModal won={won} number={correctNumber.current} onStartOverClicked={() => onStartOverClicked()}/>
       }
       <InstructionModal open={openInstructionModal} setOpen={(open: boolean) => toggleInstructionModal(open)}/>
+      {
+        openPinPadModal &&
+        <PinPadModal
+          open={openPinPadModal}
+          setOpen={(open: boolean) => togglePinPadModal(open)}
+          number={guess}
+          onNumberClicked={(number: number)  => onNumberClicked(number)}
+          onBackspaceClicked={() => onBackspaceClicked()}
+          onEnterClicked={() => onEnterClicked()}
+        />
+      }
     </div>
   )
 }

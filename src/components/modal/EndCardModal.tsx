@@ -45,14 +45,14 @@ export default function EndCardModal({ won, number, onStartOverClicked }: EndCar
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-whiteshadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-whiteshadow-xl transition-all sm:my-8 w-full max-w-xs sm:max-w-sm">
                 <div className="flex flex-col gap-6 bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <Dialog.Title as="h3" className="text-2xl font-bold leading-6 text-gray-900">
                     {won ? "Success!" : "Failure!"}
                   </Dialog.Title>
                   <div className="flex flex-col">
                     <p className='font-semibold text-black text-md'>The pin was:</p>
-                    <p className='font-bold text-gray-600 text-4xl'>{ number }</p>
+                    <p className='font-bold text-gray-700 text-4xl'>{ number }</p>
                   </div>
                   <button
                     type="button"
