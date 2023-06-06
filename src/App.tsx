@@ -37,10 +37,10 @@ export default function App() {
 
   const onEnterClicked = () => {
     const newGuesses = [...guesses]
-    let newGuess = newGuesses[guessCount]
+    const newGuess = newGuesses[guessCount]
     
     newGuess.number = guess
-    let correctPositionCount = newGuess.number.filter((number, index) => correctNumber.current[index] === number).length
+    const correctPositionCount = newGuess.number.filter((number, index) => correctNumber.current[index] === number).length
 
 
     if (correctPositionCount === GUESS_LENGTH) {
