@@ -46,7 +46,7 @@ export default function InstructionModal({open, setOpen}: InstructionProps) {
                   </Dialog.Title>
                   <div className="flex flex-col">
                     <p className='font-bold text-black text-xl mb-4'>Objective</p>
-                    <p className='font-semibold text-black text-md'>Guess the unique 4 digit pin in {MAX_GUESS_COUNT} tries</p>
+                    <p className='font-semibold text-black text-md'>Guess the unique 3 digit pin in {MAX_GUESS_COUNT} tries</p>
                   </div>
                   <div className="flex flex-col">
                     <p className='font-bold text-black text-xl mb-4'>Rules</p>
